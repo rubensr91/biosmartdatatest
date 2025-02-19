@@ -1,0 +1,86 @@
+<div class="table-container">
+  <div class="form-container">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyUserFilter($event)"
+        placeholder="Name, user or email"
+      />
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="filteredUsers()" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let user">{{ user.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>Username</th>
+      <td mat-cell *matCellDef="let user">{{ user.username }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>Address</th>
+      <td mat-cell *matCellDef="let user">
+        {{ user.address.street }}, {{ user.address.suite }},
+        {{ user.address.city }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef>Phone</th>
+      <td mat-cell *matCellDef="let user">{{ user.phone }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="website">
+      <th mat-header-cell *matHeaderCellDef>Website</th>
+      <td mat-cell *matCellDef="let user">{{ user.website }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="company">
+      <th mat-header-cell *matHeaderCellDef>Company</th>
+      <td mat-cell *matCellDef="let user">{{ user.company.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Detail</th>
+      <td mat-cell *matCellDef="let user">
+        <button
+          mat-icon-button
+          color="primary"
+          [routerLink]="['/userDetail', user.id]"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[1, 5, 10]"
+    [pageSize]="pageSize()"
+    [pageIndex]="currentPage()"
+    [length]="totalUsers()"
+    (page)="onPageChange($event)"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>
+
+<div class="chart-container">
+  <!-- <app-pie-chart [chartData]="pieChartData()"></app-pie-chart> -->
+</div>

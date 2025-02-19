@@ -1,0 +1,9 @@
+.form-container {
+  margin-top: 10px;
+  display: flex; // O display: grid;
+
+  .mat-form-field {
+    flex: 1;  // Hace que los campos ocupen el espacio disponible
+    grid-column: span 1; // Por ejemplo
+  }
+}

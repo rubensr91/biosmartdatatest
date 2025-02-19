@@ -5,6 +5,9 @@ This is a simple **dashboard application** that displays a table of users. You c
 ## Features
 - Display a table with user information.
 - Click on a user to view detailed information.
+- Error interception when you try to navigate to unknown user ID
+- Table with pagination and filtering
+- Routing navigation 
 
 ## Technologies Used
 - **Frontend:** Angular 19

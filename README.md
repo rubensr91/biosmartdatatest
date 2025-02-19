@@ -1,15 +1,36 @@
-# Biosmartdatatest
+# BioSmartData Test
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
+This is a simple **dashboard application** that displays a table of users. You can browse the user list and navigate to a detailed view of each user.
 
-## Development server
+## Features
+- Display a table with user information.
+- Click on a user to view detailed information.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Technologies Used
+- **Frontend:** Angular 19
+- **Backend:** N/A
+- **API:** https://jsonplaceholder.typicode.com
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rubensr91/biosmartdatatest.git
+   cd biosmartdatatest
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the application:
+   ```bash
+   ng serve
+   ```
 
-## Build
+## Usage
+- Open the app in your browser.
+- Go to http://localhost:4200/
+- Browse the user table and click on a user to see details.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## License
+MIT

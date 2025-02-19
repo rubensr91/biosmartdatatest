@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, computed, inject, signal, Signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
@@ -8,7 +9,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { DataService } from '../../core/services/data/data.service';
-// import { PieChartComponent } from '../../core/shared/pie-chart/pie-chart.component';
 
 @Component({
   selector: 'app-user-list',
@@ -24,7 +24,7 @@ import { DataService } from '../../core/services/data/data.service';
     MatIcon,
     FormsModule,
     RouterModule,
-    // PieChartComponent,
+    CommonModule,
   ],
 })
 export class UserListComponent {
@@ -48,13 +48,6 @@ export class UserListComponent {
     initialValue: [],
   });
 
-  usersData = toSignal(this.#dataService.getUsersData(), {
-    initialValue: {
-      labels: [],
-      datasets: [{ data: [] }],
-    },
-  });
-
   totalUsers = computed(() => this.users()?.length);
 
   pageSize = signal(5);
@@ -65,10 +58,6 @@ export class UserListComponent {
     const end = start + this.pageSize();
     return this.users().slice(start, end);
   });
-
-  // pieChartData: Signal<ChartConfiguration['data']> = computed(
-  //   () => this.usersData() || { labels: [], datasets: [{ data: [] }] }
-  // );
 
   applyUserFilter(event: any) {
     const filterValue = (event.target as HTMLInputElement).value;

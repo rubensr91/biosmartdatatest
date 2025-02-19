@@ -1,13 +1,12 @@
+import { provideHttpClient, withInterceptors } from '@angular/common/http'; // Importante
 import { Component } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
-import { provideHttpClient, withInterceptors } from '@angular/common/http'; // Importante
-import { routes } from './app.routes';
-import { RouterOutlet } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './core/shared/header/header.component';
+import { provideRouter, RouterOutlet } from '@angular/router';
 import { provideToastr } from 'ngx-toastr';
+import { routes } from './app.routes';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { HeaderComponent } from './core/shared/header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +29,7 @@ bootstrapApplication(AppComponent, {
     provideToastr({
       timeOut: 5000,
       positionClass: 'toast-top-right',
-      preventDuplicates: true
-    })
+      preventDuplicates: true,
+    }),
   ],
 });

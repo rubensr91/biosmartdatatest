@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -21,28 +21,6 @@ export class DataService {
     return this.http
       .get<any>(`${this.apiUrl}/users/${id}`)
       .pipe(catchError(this.handleError));
-  }
-
-  //Get users data for PieChart
-  getUsersData(): Observable<any> {
-    return this.getUsers().pipe(
-      map((users) => {
-        const companyNames = users.map((user) => user.company.name);
-        const counts: { [companyName: string]: number } = {};
-        companyNames.forEach((name) => {
-          counts[name] = (counts[name] || 0) + 1;
-        });
-
-        const labels = Object.keys(counts);
-        const data = Object.values(counts);
-
-        return {
-          labels: labels,
-          datasets: [{ data: data }],
-        };
-      }),
-      catchError(this.handleError)
-    );
   }
 
   private handleError(error: HttpErrorResponse) {

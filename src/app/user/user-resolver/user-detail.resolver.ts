@@ -1,4 +1,3 @@
-// user-detail.resolver.ts
 import { inject } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
@@ -17,13 +16,13 @@ export const userDetailResolver: ResolveFn<any> = (
   const id = route.paramMap.get('id');
 
   if (!id) {
-    console.error('ID de usuario no proporcionado.');
+    console.error('ID not found.');
     return EMPTY;
   }
 
   return dataService.getUser(Number(id)).pipe(
     catchError((error) => {
-      console.error('Error al cargar el usuario:', error);
+      console.error('Error loading user:', error);
       return of(null);
     })
   );
